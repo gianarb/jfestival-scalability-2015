@@ -1,0 +1,6 @@
+{
+  "name": "jfestival-scalability",
+  "dependencies": {
+    "corley-presenter": "*"
+  }
+}
