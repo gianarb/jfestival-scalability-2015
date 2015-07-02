@@ -1,6 +1,7 @@
 {
   "name": "jfestival-scalability",
   "dependencies": {
-    "corley-presenter": "*"
+    "corley-presenter": "*",
+    "jquery": "*"
   }
 }

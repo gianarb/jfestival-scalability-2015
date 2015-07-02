@@ -42,7 +42,7 @@
 
 				<section data-background="img/start.png">
             <h2>What is scalabily?</h2>
-            <p><strong>Scalability <=> Hight avalability.</strong></p>
+            <p><strong>Scalability <=> High avalability.</strong></p>
             <blockquote>Scalability is the ability of a system, network, or process to handle a growing amount
                 of work in a capable manner or its ability to be enlarged to accommodate that growth.
                 </br></br><i>cit. Wikipedia.</i></blockquote>
@@ -79,24 +79,51 @@
             <img src="img/provision2.png"/>
 				</section>
 
-
 				<section data-background="img/start.png">
             <h3>The number of instances now isn't your problem</h3>
             <img src="img/provision4.png"/>
 				</section>
+
+
+        <section data-state="scale-state" id="scaleSlide">
+            <h2>Autoscalable infrastructures</h2>
+            <div style="height:220px">
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div style="display:block; margin-top: 5px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <div class="ec2" style="display:inline-block; margin: 0 5px; width: 100px; height: 100px;"></div>
+            <h3 class="message"></h3>
+            </div>
+        </section>
 
 				<section data-background="img/start.png">
             <h2>There are two types of scalability</h2>
 				</section>
 
 				<section data-background="img/start.png">
-            <h3>Horizontal scalability</h3>
+            <h3>Vertial scalability</h3>
             <img src="img/sumo.jpg" style="width:70%"/>
 				</section>
 
 				<section data-background="img/start.png">
-            <h3>Vertical scalability</h3>
+            <h3>Horizontal scalability</h3>
             <img src="img/infr.png"/>
+				</section>
+				<section data-background="img/start.png">
+          <h2>Problems</h2>
+          <ul>
+              <li class="fragment" data-fragment="1"><strong>Deploy your Joomla in n>1 servers</strong> <span class="fragment" data-fragment="2">Filezilla??! WTF</span></li>
+              <li class="fragment" data-fragment="3">Read logs</li>
+              <li class="fragment" data-fragment="4"><strong>Session & Cache</strong></li>
+              <li class="fragment" data-fragment="5"><strong>Monitor</strong></li>
+          </ul>
 				</section>
 
 				<section data-background="img/start.png">
@@ -110,7 +137,7 @@
             <img src="img/first/a-console.png" />
 				</section>
 				<section data-background="img/start.png">
-            <h2>Application and Env</h2>
+            <h2>Multi-app & multi-env</h2>
             <img src="img/first/b-app.png" />
 				</section>
 				<section data-background="img/start.png">
@@ -130,9 +157,17 @@
             <img src="img/first/f-monitor.png" />
 				</section>
 				<section data-background="img/start.png">
+          <h2>Benefits</h2>
+          <ul>
+              <li class="fragment" data-fragment="1">Environment migrations via "Swap URL"</li>
+              <li class="fragment" data-fragment="2">Multi environment application deployment (staging, testing, production...)</li>
+              <li class="fragment" data-fragment="2">Automated instances recover</li>
+          </ul>
+				</section>
+				<section data-background="img/start.png">
           <h2>Questions?</h2>
           <p>
-            Aws Beanstalk help you to manage scalable infrastructure, this type of work opens a few problem.</br>
+            Aws Beanstalk helps you to manage scalable infrastructure, this type of work adds few problems.</br>
             This stuff requires a change of workflow, in first because now your application runs in a lot of servers
           </p>
 				</section>
@@ -156,8 +191,30 @@
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
+
+
+        var timeout = 700;
+        Reveal.addEventListener(
+            'scale-state',
+            function(slide) {
+                setInterval(function(){
+                    var ec2Count = $('#scaleSlide .ec2').length;
+                    var lottery = parseInt(Math.random() * 1e9) % ec2Count
+
+                    var selected = $($('#scaleSlide .ec2')[lottery]);
+                    if (selected.is(':visible')) {
+                        selected.fadeOut()
+                    } else {
+                        selected.fadeIn()
+                    }
+
+                }, 600);
+            },
+            false
+        );
 		</script>
     <script src="bower_components/corley-presenter/presenter.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
 
 	</body>
 </html>
